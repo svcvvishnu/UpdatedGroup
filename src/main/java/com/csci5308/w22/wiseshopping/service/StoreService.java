@@ -26,7 +26,7 @@ public class StoreService {
      * @param name name of store
      * @param businessType type of business of the store
      * @param startTime starting time of business
-     * @param endTime ending time of buisness
+     * @param endTime ending time of business
      * @param contact contact info
      * @param merchant merchant that the store belongs to
      * @param location location of the store
@@ -72,7 +72,7 @@ public class StoreService {
 
     /**
      * deletes a store from table
-     * @param store
+     * @param store store
      * @return true, if success; else false
      */
     @Transactional

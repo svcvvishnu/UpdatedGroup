@@ -4,8 +4,6 @@ import lombok.EqualsAndHashCode;
 
 import javax.persistence.*;
 import java.sql.Time;
-import java.util.Objects;
-import java.util.Timer;
 
 /**
  * @author Elizabeth James

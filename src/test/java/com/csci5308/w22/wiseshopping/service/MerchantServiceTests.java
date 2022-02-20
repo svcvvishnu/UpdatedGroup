@@ -9,7 +9,6 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.test.util.ReflectionTestUtils;
 
 
 import static org.mockito.Mockito.when;
@@ -37,8 +36,6 @@ public class MerchantServiceTests {
     public void testRegisterMerchant() {
         when(mockedMerchantRepository.save(any(Merchant.class))).thenReturn(merchant);
         Merchant actualMerchant = merchantService.registerMerchant("John Doe", "johndoe@xyz.com", "password123");
-        System.out.println(merchant);
-        System.out.println(actualMerchant);
         Assertions.assertEquals(merchant, actualMerchant);
     }
 
