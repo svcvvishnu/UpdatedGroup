@@ -1,10 +1,7 @@
 package com.csci5308.w22.wiseshopping.integrationTests.service;
 
 import com.csci5308.w22.wiseshopping.models.Location;
-import com.csci5308.w22.wiseshopping.models.Merchant;
 import com.csci5308.w22.wiseshopping.service.LocationService;
-import com.csci5308.w22.wiseshopping.service.MerchantService;
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

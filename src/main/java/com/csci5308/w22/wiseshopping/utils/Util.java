@@ -17,12 +17,10 @@ public class Util {
 
         if (time.split(":").length == 1) {
             time = time + ":00:00";
-            //return Time.valueOf(time);
         } else if (time.split(":").length == 2) {
             time = time + ":00";
-            return Time.valueOf(time);
         } else if (time.split(":").length == 3) {
-            return Time.valueOf(time);
+            // do nothing
         }
         // throw exception if any other format is passed
         else {

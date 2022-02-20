@@ -4,7 +4,6 @@ import lombok.EqualsAndHashCode;
 import org.apache.commons.codec.digest.DigestUtils;
 
 import javax.persistence.*;
-import java.util.Objects;
 
 /**
  * @author Elizabeth James
