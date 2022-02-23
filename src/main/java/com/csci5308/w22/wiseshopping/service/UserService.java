@@ -4,20 +4,22 @@ import com.csci5308.w22.wiseshopping.models.Merchant;
 import com.csci5308.w22.wiseshopping.models.User;
 import com.csci5308.w22.wiseshopping.repository.MerchantRepository;
 import com.csci5308.w22.wiseshopping.repository.UserRepository;
+import com.trilead.ssh2.auth.AuthenticationManager;
 import org.apache.commons.validator.routines.EmailValidator;
+import org.apache.tomcat.util.net.openssl.ciphers.Authentication;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import javax.swing.text.html.Option;
+import java.util.List;
+import java.util.Optional;
 
 /**
  * @author Pavithra Gunasekaran
  */
+@Service
 public class UserService {
-
     @Autowired
     UserRepository userRepository;
 
@@ -35,16 +37,13 @@ public class UserService {
         if (!EmailValidator.getInstance().isValid(email)) {
             throw new IllegalArgumentException("given email id is not valid");
         }
-        User user = new User(email, password);
-        AuthenticationManager authenticationManager = null;
-        Authentication authenticate = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(email, password));
-        if (authenticate.isAuthenticated()) {
-            SecurityContextHolder.getContext().setAuthentication(authenticate);
+        List<User> user = userRepository.findByEmailAndPassword(email,password);
+
+        if (user!= null){
             return true;
         }
-
-
         return false;
+
     }
 }
 
