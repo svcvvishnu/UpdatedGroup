@@ -1,6 +1,7 @@
 package com.csci5308.w22.wiseshopping.runner;
 
 import com.csci5308.w22.wiseshopping.service.MerchantService;
+import com.csci5308.w22.wiseshopping.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,7 +19,8 @@ public class Runner implements CommandLineRunner {
 
     @Autowired
     MerchantService merchantService;
-
+    @Autowired
+    UserService userService;
     @Override
     public void run(String... args) {
         LOGGER.info("Dummy log");
@@ -27,7 +29,8 @@ public class Runner implements CommandLineRunner {
             // TODO: Scanner code
 
             //TODO: Dummy code to validate jar
-            merchantService.registerMerchant("John Doe","johndoe@xyz.com","password123");
+            //merchantService.registerMerchant("John Doe","johndoe@xyz.com","password123");
+            userService.loginUser("johndoe@xyz.com","Password123!");
 
         }
         catch (DataAccessException e){

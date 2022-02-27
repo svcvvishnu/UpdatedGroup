@@ -69,6 +69,11 @@
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>com.trilead</groupId>
+			<artifactId>trilead-ssh2</artifactId>
+			<version>1.0.0-build217</version>
+		</dependency>
 
 	</dependencies>
 
