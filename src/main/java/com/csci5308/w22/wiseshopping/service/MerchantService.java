@@ -63,4 +63,6 @@ public class MerchantService {
         return false;
     }
 
+    public void loginMerchant(String username, String password) {
+    }
 }
