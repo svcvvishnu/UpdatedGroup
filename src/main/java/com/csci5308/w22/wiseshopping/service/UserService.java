@@ -30,19 +30,35 @@ public class UserService {
      * @param password password of the user
      */
     @Transactional
-    public boolean loginUser(String email, String password) {
+
+    public User loginUser(String email, String password) {
+        if (email == null) {
+            throw new NullPointerException("email cannot be null");
+        }
+        if (email.isEmpty() || email.isBlank()) {
+            throw new IllegalArgumentException("email cannot be empty");
+        }
+
         if (email == null || email.isBlank() || email.isEmpty()) {
             throw new IllegalArgumentException("email cannot be null or empty or blank");
+
         }
         if (!EmailValidator.getInstance().isValid(email)) {
             throw new IllegalArgumentException("given email id is not valid");
         }
-        User user = userRepository.findByEmailAndPassword(email,password);
-        //System.out.println(user);
-        if (user!= null){
-            return true;
+
+        if(password==null)
+        {
+            throw new NullPointerException("password cannot be null");
         }
-        return false;
+        if(password.isBlank() || password.isEmpty())
+        {
+            throw new IllegalArgumentException("password cannot be empty");
+        }
+        User user = userRepository.findByEmailAndPassword(email,password);
+        return user;
+
+
 
     }
 }
