@@ -1,5 +1,6 @@
 package com.csci5308.w22.wiseshopping.service;
 
+import com.csci5308.w22.wiseshopping.exceptions.UserAlreadyRegisteredException;
 import com.csci5308.w22.wiseshopping.models.Merchant;
 import com.csci5308.w22.wiseshopping.repository.MerchantRepository;
 import org.apache.commons.validator.routines.EmailValidator;
@@ -41,7 +42,11 @@ public class MerchantService {
             throw new IllegalArgumentException("given email is not valid");
         }
 
-        Merchant merchant = new Merchant(name, email, password);
+        Merchant merchant = merchantRepository.findMerchantByEmail(email);
+        if (merchant!=null){
+            throw new UserAlreadyRegisteredException(email + " is already registered");
+        }
+        merchant = new Merchant(name, email, password);
         merchantRepository.save(merchant);
         return merchant;
     }
@@ -63,4 +68,12 @@ public class MerchantService {
         return false;
     }
 
+    public Merchant loginMerchant(String username, String password) {
+        //TODO: implement later
+        return new Merchant();
+    }
+
+    public Merchant getMerchantByEmail(String email){
+        return merchantRepository.findMerchantByEmail(email);
+    }
 }

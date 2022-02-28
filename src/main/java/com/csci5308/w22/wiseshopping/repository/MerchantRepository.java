@@ -10,4 +10,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface MerchantRepository extends CrudRepository<Merchant,Integer> {
      Integer deleteByEmail(String email);
+     Merchant findMerchantByEmail(String email);
 }
