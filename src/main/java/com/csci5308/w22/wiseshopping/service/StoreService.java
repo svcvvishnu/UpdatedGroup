@@ -89,6 +89,7 @@ public class StoreService {
         return storeRepository.findByMerchantID(merchant.getMerchantId());
     }
 
+    @Transactional
     public boolean remove(int id){
         int deletedId = storeRepository.deleteByStoreId(id);
         if (deletedId > 0){

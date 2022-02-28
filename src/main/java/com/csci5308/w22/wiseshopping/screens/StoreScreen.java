@@ -48,6 +48,7 @@ public class StoreScreen implements Screen {
     public boolean render(ScreenFactory screenFactory) {
         LOGGER.info("****STORE MENU****");
         LOGGER.info("");
+        boolean success = false;
         try {
             String input = "";
             LOGGER.info("enter one of the following \nadd \ndelete");
@@ -66,21 +67,22 @@ public class StoreScreen implements Screen {
                 String country = scan(scanner);
                 Location location = locationService.addLocation(storeName, zipcode, province, country);
                 Store store = storeService.addStore(locationName,businessType, startTime, endTime, contact,merchant,location);
-
+                if (store!=null){
+                    success = true;
+                }
 
             } else if (input.equals(Constants.DELETE)) {
                 List<Store> storeList = storeService.getAllStoresBelongingToAMerchant(merchant);
                 storeList.stream().forEach(s -> LOGGER.info( "Store id:  {}, name: {}", s.getStoreId(), s.getStoreName()));
                 String idToBeDeleted = scan(scanner);
-                storeService.remove(Integer.parseInt(idToBeDeleted));
-
-
+                success = storeService.remove(Integer.parseInt(idToBeDeleted));
+                
 
             }
         } catch (MenuInterruptedException e) {
             getNavigations(screenFactory, validScreens, LOGGER, scanner);
         }
-        return true;
+        return success;
     }
 
     @Override

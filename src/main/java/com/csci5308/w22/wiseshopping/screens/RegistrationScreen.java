@@ -47,6 +47,7 @@ public class RegistrationScreen implements Screen {
 
     @Override
     public boolean render(ScreenFactory screenFactory) {
+        boolean success = false;
         LOGGER.info("***REGISTRATION Screen****");
         LOGGER.info("use : for additional navigation");
         try {
@@ -62,20 +63,21 @@ public class RegistrationScreen implements Screen {
                 merchant = merchantService.registerMerchant(name, email, password);
                 Screen screen = screenFactory.getScreen(Constants.MERCHANT_MENU);
                 screen.setMerchant(merchant);
-                screen.render(screenFactory);
+                success = screen.render(screenFactory);
             }
             if (Constants.USER.equalsIgnoreCase(input)) {
                 LOGGER.info("Enter <name> <email> <password>");
                 String name = scan(scanner);
                 String email = scan(scanner);
                 String password = scan(scanner);
-                userService.registerUser(name, email, password);
+                User user = userService.registerUser(name, email, password);
+                success = user!=null;
             }
 
         } catch (MenuInterruptedException e) {
             getNavigations(screenFactory, validScreens, LOGGER, scanner);
         }
-        return true;
+        return success;
     }
 
     @Override

@@ -47,6 +47,7 @@ public class LoginScreen implements Screen{
     public boolean render(ScreenFactory screenFactory) {
         LOGGER.info("***LOGIN Screen****");
         LOGGER.info("use : for additional navigation");
+        boolean success = false;
         try{
         String input = "";
         LOGGER.info("Are you a merchant or a user?");
@@ -56,18 +57,20 @@ public class LoginScreen implements Screen{
             LOGGER.info("Enter <username> <password>");
             String username =scan(scanner);
             String password = scan(scanner);
-            merchantService.loginMerchant(username, password);
+            Merchant merchant = merchantService.loginMerchant(username, password);
+            success = merchant!=null;
         }
         if (Constants.USER.equalsIgnoreCase(input)){
             LOGGER.info("Enter <username> <password>");
             String username =scan(scanner);
             String password = scan(scanner);
-            userService.loginUser(username, password);
+            User user = userService.loginUser(username, password);
+            success = user!=null;
         }}
         catch (MenuInterruptedException e){
             getNavigations(screenFactory,validScreens,LOGGER,scanner);
         }
-        return true;
+        return success;
     }
 
     @Override

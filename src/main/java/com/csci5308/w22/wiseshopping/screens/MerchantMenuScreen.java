@@ -48,6 +48,7 @@ public class MerchantMenuScreen implements Screen {
     public boolean render(ScreenFactory screenFactory) {
         LOGGER.info("****MERCHANT MENU****");
         LOGGER.info("");
+        boolean success = false;
         try {
             String input = "";
             LOGGER.info("Choose one of the following");
@@ -58,7 +59,7 @@ public class MerchantMenuScreen implements Screen {
             if(input.equals(Constants.OPTION_ONE)){
                 Screen screen = screenFactory.getScreen( Constants.STORE_MENU);
                 screen.setMerchant(merchant);
-                screen.render(screenFactory);
+                success = screen.render(screenFactory);
             }
             else if(input.equals(Constants.OPTION_TWO)){
                 //TODO
@@ -66,7 +67,7 @@ public class MerchantMenuScreen implements Screen {
         } catch (MenuInterruptedException e) {
             getNavigations(screenFactory, validScreens, LOGGER, scanner);
         }
-        return true;
+        return success;
     }
 
     @Override

@@ -42,7 +42,8 @@ class UserServiceTests {
     @Test
     public void testLoginUser()  {
         when(mockedUserRepository.findByEmailAndPassword(any(String.class),any(String.class))).thenReturn(user);
-        Assertions.assertTrue(userService.loginUser("johndoe@xyz.com",  "Password123!"));
-
+        User actualUser = userService.loginUser("johndoe@xyz.com",  "Password123!");
+        user.setUserId(actualUser.getUserId());
+        Assertions.assertEquals(user, actualUser);
     }
 }

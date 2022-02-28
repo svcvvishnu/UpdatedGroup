@@ -30,7 +30,7 @@ public class UserService {
      * @param password password of the user
      */
     @Transactional
-    public boolean loginUser(String email, String password) {
+    public User loginUser(String email, String password) {
         if (email == null || email.isBlank() || email.isEmpty()) {
             throw new IllegalArgumentException("email cannot be null or empty or blank");
         }
@@ -39,15 +39,14 @@ public class UserService {
         }
         User user = userRepository.findByEmailAndPassword(email,password);
         //System.out.println(user);
-        if (user!= null){
-            return true;
-        }
-        return false;
+        return user;
 
     }
 
     public User registerUser(String name, String email, String password) {
-        return null;
+        //TODO implementation
+        User user =  new User(1);
+        return user;
     }
 }
 

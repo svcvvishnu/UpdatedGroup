@@ -68,7 +68,9 @@ public class MerchantService {
         return false;
     }
 
-    public void loginMerchant(String username, String password) {
+    public Merchant loginMerchant(String username, String password) {
+        //TODO: implement later
+        return new Merchant();
     }
 
     public Merchant getMerchantByEmail(String email){
