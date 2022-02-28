@@ -30,7 +30,6 @@ public class UserService {
      * @param password password of the user
      */
     @Transactional
-
     public User loginUser(String email, String password) {
         if (email == null) {
             throw new NullPointerException("email cannot be null");
@@ -47,18 +46,16 @@ public class UserService {
             throw new IllegalArgumentException("given email id is not valid");
         }
 
-        if(password==null)
-        {
+        if (password == null) {
             throw new NullPointerException("password cannot be null");
         }
-        if(password.isBlank() || password.isEmpty())
-        {
+        if (password.isBlank() || password.isEmpty()) {
             throw new IllegalArgumentException("password cannot be empty");
         }
-        User user = userRepository.findByEmailAndPassword(email,password);
+        User user = userRepository.findByEmailAndPassword(email, password);
         return user;
 
-
+    }
 
     public User registerUser(String name, String email, String password) {
         //TODO implementation
