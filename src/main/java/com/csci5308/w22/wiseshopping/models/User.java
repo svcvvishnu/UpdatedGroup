@@ -1,6 +1,9 @@
 package com.csci5308.w22.wiseshopping.models;
 
 import lombok.EqualsAndHashCode;
+
+import net.bytebuddy.dynamic.loading.InjectionClassLoader;
+
 import org.apache.commons.codec.digest.DigestUtils;
 
 import javax.persistence.*;
@@ -13,6 +16,9 @@ import java.sql.Timestamp;
 @Entity
 @Table(name = "user_details")
 public class User {
+
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+
     @Id
     @Column(name = "user_id")
     private int userId;
@@ -35,7 +41,14 @@ public class User {
     @Column(name = "register_at" ,columnDefinition="TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
     private Timestamp register_at;
 
-    public User(String userID,String userFirstName,String userLastName, String email , String password, String contact, Timestamp register_at) {
+
+
+    public User(int userId) {
+        this.userId = userId;
+    }
+
+    public User(String userID, String userFirstName, String userLastName, String email , String password, String contact, Timestamp register_at) {
+
         this.userFirstName = userFirstName;
         this.userLastName = userLastName;
         this.email = email;
@@ -54,6 +67,7 @@ public class User {
 
     }
 
+
     public User(String userFirstName, String userLastName, String email, String password, String contact, Timestamp register_at) {
         this.userFirstName = userFirstName;
         this.userLastName = userLastName;
@@ -70,6 +84,7 @@ public class User {
         this.contact = contact;
 
     }
+
 
 
     /**

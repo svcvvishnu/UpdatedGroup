@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.sql.Time;
+import java.util.List;
 
 /**
  * this method acts like a service for store
@@ -82,5 +83,19 @@ public class StoreService {
         }
         storeRepository.delete(store);
         return true;
+    }
+
+    @Transactional
+    public List<Store> getAllStoresBelongingToAMerchant(Merchant merchant){
+        return storeRepository.findByMerchantID(merchant.getMerchantId());
+    }
+
+    @Transactional
+    public boolean remove(int id){
+        int deletedId = storeRepository.deleteByStoreId(id);
+        if (deletedId > 0){
+            return true;
+        }
+        return false;
     }
 }
