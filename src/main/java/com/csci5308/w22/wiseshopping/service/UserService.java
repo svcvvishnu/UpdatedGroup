@@ -45,6 +45,10 @@ public class UserService {
         return false;
 
     }
+
+    public User registerUser(String name, String email, String password) {
+        return null;
+    }
 }
 
 

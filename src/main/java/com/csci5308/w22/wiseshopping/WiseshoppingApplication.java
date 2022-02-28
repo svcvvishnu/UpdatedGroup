@@ -19,7 +19,7 @@ public class WiseshoppingApplication {
         SpringApplication.run(WiseshoppingApplication.class, args);
     }
 
-    @Profile("!dev")
+    @Profile("!local")
     @Bean
     public Runner getRunner(){
         return new Runner();

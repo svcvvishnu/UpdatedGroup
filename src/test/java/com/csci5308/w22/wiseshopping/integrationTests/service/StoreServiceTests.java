@@ -14,12 +14,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 
+import java.util.List;
+
 /**
  * @author Elizabeth James
  */
 //TODO: change profile to test later
 @SpringBootTest
-@ActiveProfiles(profiles = "dev")
+@ActiveProfiles(profiles = "local")
 public class StoreServiceTests {
     @Autowired
     private StoreService storeService;
@@ -42,5 +44,14 @@ public class StoreServiceTests {
         storeService.remove(expectedStore);
         merchantService.removeMerchant("dummy@dummy.com");
         locationService.remove(location);
+    }
+
+    @Test
+    public void testGetAllStores(){
+        Merchant merchant = merchantService.getMerchantByEmail("zil@zil.com");
+        List<Store> storeList = storeService.getAllStoresBelongingToAMerchant(merchant);
+        for (Store store : storeList){
+            System.out.println(store);
+        }
     }
 }

@@ -15,8 +15,7 @@ import org.springframework.test.context.ActiveProfiles;
  * @author Elizabeth James
  */
 @SpringBootTest
-@ActiveProfiles(profiles = "local")
-
+@ActiveProfiles(profiles = "dev")
 public class MerchantServiceTests {
     @Autowired
     private MerchantService merchantService;

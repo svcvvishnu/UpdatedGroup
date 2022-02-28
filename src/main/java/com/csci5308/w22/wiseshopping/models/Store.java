@@ -8,6 +8,7 @@ import java.sql.Time;
 /**
  * @author Elizabeth James
 */
+
 @EqualsAndHashCode
 @Entity
 @Table
@@ -105,5 +106,19 @@ public class Store {
 
     public void setMerchant(Merchant merchant) {
         this.merchant = merchant;
+    }
+
+    @Override
+    public String toString() {
+        return "Store{" +
+                "storeId=" + storeId +
+                ", storeName='" + storeName + '\'' +
+                ", startTime=" + startTime +
+                ", endTime=" + endTime +
+                ", type='" + type + '\'' +
+                ", contact='" + contact + '\'' +
+                ", location=" + location +
+                ", merchant=" + merchant +
+                '}';
     }
 }
