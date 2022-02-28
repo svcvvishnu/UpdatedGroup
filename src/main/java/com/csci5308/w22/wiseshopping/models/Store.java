@@ -11,7 +11,7 @@ import java.sql.Time;
 
 @EqualsAndHashCode
 @Entity
-@Table
+@Table(name = "store")
 public class Store {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

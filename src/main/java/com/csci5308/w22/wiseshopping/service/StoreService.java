@@ -85,6 +85,7 @@ public class StoreService {
         return true;
     }
 
+    @Transactional
     public List<Store> getAllStoresBelongingToAMerchant(Merchant merchant){
         return storeRepository.findByMerchantID(merchant.getMerchantId());
     }
