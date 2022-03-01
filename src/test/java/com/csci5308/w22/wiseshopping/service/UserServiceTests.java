@@ -80,7 +80,6 @@ class UserServiceTests {
     }
 
 
-
     @Test
     public void testUpdateUserDetailsInvalidFirstName() {
         when(mockedUserRepository.getUserByEmail(any(String.class))).thenReturn(user);
@@ -121,7 +120,6 @@ class UserServiceTests {
 
     @Test
     public void testInputParametersForLoginUser(){
-
 
         NullPointerException emailNullException=Assertions.assertThrows(NullPointerException.class, () -> userService.loginUser(null,"test_password"));
         Assertions.assertEquals("email cannot be null",emailNullException.getMessage());

@@ -29,6 +29,8 @@ public class UserServiceTests {
             user = new User("johndoe@xyz.com",  "Password123!");
         }
 
+        //Fetch the details from the DB  --- Do not push --remove it
+
         @Test
         public void testLoginUser(){
             User actualUser = userService.loginUser("johndoe@xyz.com","Password123!");
@@ -36,6 +38,7 @@ public class UserServiceTests {
 
         }
 
+//Add integration tests
 
 
     }

@@ -7,7 +7,7 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 /**
- * @author Elizabeth James
+ * @author Nilesh
  */
 @Repository
 public interface ProductInventoryRepository extends CrudRepository<ProductInventory,Integer> {

@@ -16,9 +16,7 @@ import java.sql.Timestamp;
 @Entity
 @Table(name = "user_details")
 public class User {
-
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-
     @Id
     @Column(name = "user_id")
     private int userId;
@@ -40,8 +38,6 @@ public class User {
 
     @Column(name = "register_at" ,columnDefinition="TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
     private Timestamp register_at;
-
-
 
     public User(int userId) {
         this.userId = userId;

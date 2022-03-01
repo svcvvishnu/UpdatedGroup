@@ -47,6 +47,9 @@ public class MerchantServiceTests {
         Assertions.assertEquals(merchant.getPassword(),actualMerchant.getPassword());
 
     }
+
+    //ADd my updated test
+
     @Test
     @Order(3)
     public void testRemoveExistingMerchant(){
