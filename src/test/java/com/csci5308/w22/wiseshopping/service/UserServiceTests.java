@@ -59,7 +59,7 @@ class UserServiceTests {
 
     @Test
     public void testUpdateUserDetails() {
-        when(mockedUserRepository.getUserByEmail(any(String.class))).thenReturn(user);
+        when(mockedUserRepository.findByEmail(any(String.class))).thenReturn(user);
 
         //Getting the updated user
         Map<String, String> userDetails = new HashMap<>();
@@ -82,7 +82,7 @@ class UserServiceTests {
 
     @Test
     public void testUpdateUserDetailsInvalidFirstName() {
-        when(mockedUserRepository.getUserByEmail(any(String.class))).thenReturn(user);
+        when(mockedUserRepository.findByEmail(any(String.class))).thenReturn(user);
         Map<String, String> userDetails = new HashMap<>();
         userDetails.put(UserService.FIRST_NAME, "");
         IllegalArgumentException ex = Assertions.assertThrows( IllegalArgumentException.class,
@@ -92,7 +92,7 @@ class UserServiceTests {
 
     @Test
     public void testUpdateUserDetailsInvalidLastName() {
-        when(mockedUserRepository.getUserByEmail(any(String.class))).thenReturn(user);
+        when(mockedUserRepository.findByEmail(any(String.class))).thenReturn(user);
         Map<String, String> userDetails = new HashMap<>();
         userDetails.put(UserService.LAST_NAME, "");
         IllegalArgumentException ex = Assertions.assertThrows( IllegalArgumentException.class,
@@ -102,7 +102,7 @@ class UserServiceTests {
 
     @Test
     public void testUpdateUserDetailsInvalidContact() {
-        when(mockedUserRepository.getUserByEmail(any(String.class))).thenReturn(user);
+        when(mockedUserRepository.findByEmail(any(String.class))).thenReturn(user);
         Map<String, String> userDetails = new HashMap<>();
         userDetails.put(UserService.CONTACT, "");
         IllegalArgumentException ex = Assertions.assertThrows( IllegalArgumentException.class,

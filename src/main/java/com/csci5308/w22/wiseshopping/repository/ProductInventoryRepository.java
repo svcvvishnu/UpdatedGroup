@@ -12,5 +12,8 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface ProductInventoryRepository extends CrudRepository<ProductInventory,Integer> {
 
-     ProductInventory getProductInventory(Product product, Store store);
+//     ProductInventory getProductInventory(Product product, Store store);
+
+//     ProductInventory findByProductandStore(Product product, Store store);
+     ProductInventory findByProductAndStore(Product product, Store store);
 }

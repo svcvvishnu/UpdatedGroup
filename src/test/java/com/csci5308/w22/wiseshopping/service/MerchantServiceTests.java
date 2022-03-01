@@ -140,7 +140,7 @@ public class MerchantServiceTests {
         Product product = new Product();
         Store store = new Store();
         ProductInventory inventory = new ProductInventory( store, product, 123, 456);
-        when(mockedInventoryRepository.getProductInventory(product,store)).thenReturn(inventory);
+        when(mockedInventoryRepository.findByProductAndStore(product,store)).thenReturn(inventory);
 
         ProductInventory updated = merchantService.updateProductPrice(product, store, 1000);
 
@@ -153,7 +153,7 @@ public class MerchantServiceTests {
         Product product = new Product();
         Store store = new Store();
         ProductInventory inventory = new ProductInventory( store, product, 123, 456);
-        when(mockedInventoryRepository.getProductInventory(product,store)).thenReturn(inventory);
+        when(mockedInventoryRepository.findByProductAndStore(product,store)).thenReturn(inventory);
 
         ProductInventory updated = merchantService.updateProductStock(product, store, 8888);
 
@@ -165,7 +165,7 @@ public class MerchantServiceTests {
     public void testUpdateProductPriceInvalidProductStore(){
         Product product = new Product();
         Store store = new Store();
-        when(mockedInventoryRepository.getProductInventory(product,store)).thenReturn(null);
+        when(mockedInventoryRepository.findByProductAndStore(product,store)).thenReturn(null);
 
         IllegalArgumentException ex = Assertions.assertThrows( IllegalArgumentException.class,
                 () -> merchantService.updateProductPrice(product, store, 1000), "Exception not thrown");
@@ -177,7 +177,7 @@ public class MerchantServiceTests {
     public void testUpdateProductStockInvalidProductStore(){
         Product product = new Product();
         Store store = new Store();
-        when(mockedInventoryRepository.getProductInventory(product,store)).thenReturn(null);
+        when(mockedInventoryRepository.findByProductAndStore(product,store)).thenReturn(null);
 
         IllegalArgumentException ex = Assertions.assertThrows( IllegalArgumentException.class,
                 () -> merchantService.updateProductStock(product, store, 1000), "Exception not thrown");
@@ -188,7 +188,7 @@ public class MerchantServiceTests {
     public void testUpdateProductCategoryName(){
         Product product = new Product();
         ProductCategory category = new ProductCategory( product, "Category A", "Category A Desc");
-        when(mockedCategoryRepository.getProductCategoryById(any(Integer.class))).thenReturn(category);
+        when(mockedCategoryRepository.findByProductCategoryId(any(Integer.class))).thenReturn(category);
 
         ProductCategory updated = merchantService.updateProductCategoryName(1, "Category Name Updated");
 
@@ -200,7 +200,7 @@ public class MerchantServiceTests {
     public void testUpdateProductCategoryDesc(){
         Product product = new Product();
         ProductCategory category = new ProductCategory( product, "Category A", "Category A Desc");
-        when(mockedCategoryRepository.getProductCategoryById(any(Integer.class))).thenReturn(category);
+        when(mockedCategoryRepository.findByProductCategoryId(any(Integer.class))).thenReturn(category);
 
         ProductCategory updated = merchantService.updateProductCategoryDescription(1, "Category Desc Updated");
 
@@ -210,7 +210,7 @@ public class MerchantServiceTests {
 
     @Test
     public void testUpdateProductCategoryNameInvalidProduct(){
-        when(mockedCategoryRepository.getProductCategoryById(any(Integer.class))).thenReturn(null);
+        when(mockedCategoryRepository.findByProductCategoryId(any(Integer.class))).thenReturn(null);
 
         IllegalArgumentException ex = Assertions.assertThrows( IllegalArgumentException.class,
                 () -> merchantService.updateProductCategoryName(1, "Category Name Updated"), "Exception not thrown");
@@ -219,7 +219,7 @@ public class MerchantServiceTests {
 
     @Test
     public void testUpdateProductCategoryDescInvalidProduct(){
-        when(mockedCategoryRepository.getProductCategoryById(any(Integer.class))).thenReturn(null);
+        when(mockedCategoryRepository.findByProductCategoryId(any(Integer.class))).thenReturn(null);
 
         IllegalArgumentException ex = Assertions.assertThrows( IllegalArgumentException.class,
                 () -> merchantService.updateProductCategoryDescription(1, "Category Desc Updated"), "Exception not thrown");

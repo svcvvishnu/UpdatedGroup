@@ -107,7 +107,7 @@ public class MerchantService {
     @Transactional
     public ProductInventory updateProductPrice(Product product, Store store, int price) {
 
-        ProductInventory productInventory = productInventoryRepository.getProductInventory(product, store);
+        ProductInventory productInventory = productInventoryRepository.findByProductAndStore(product, store);
 
         if (productInventory == null) {
             throw new IllegalArgumentException("Could not find inventory with given Product in store");
@@ -120,7 +120,7 @@ public class MerchantService {
 
     @Transactional
     public ProductInventory updateProductStock(Product product, Store store, int stock) {
-        ProductInventory productInventory = productInventoryRepository.getProductInventory(product, store);
+        ProductInventory productInventory = productInventoryRepository.findByProductAndStore(product, store);
 
         if (productInventory == null) {
             throw new IllegalArgumentException("Could not find inventory with given Product in store:");
@@ -133,7 +133,7 @@ public class MerchantService {
 
     @Transactional
     public ProductCategory updateProductCategoryName(int productCategoryId, String name) {
-        ProductCategory category = productCategoryRepository.getProductCategoryById(productCategoryId);
+        ProductCategory category = productCategoryRepository.findByProductCategoryId(productCategoryId);
 
         if (category == null) {
             throw new IllegalArgumentException("Could not find category with given Id: " + productCategoryId);
@@ -146,7 +146,7 @@ public class MerchantService {
 
     @Transactional
     public ProductCategory updateProductCategoryDescription(int productCategoryId, String description) {
-        ProductCategory category = productCategoryRepository.getProductCategoryById(productCategoryId);
+        ProductCategory category = productCategoryRepository.findByProductCategoryId(productCategoryId);
 
         if (category == null) {
             throw new IllegalArgumentException("Could not find category with given Id: " + productCategoryId);

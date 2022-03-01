@@ -74,7 +74,7 @@ public class UserService {
     @Transactional
     public User updateUserDetails(String email, Map<String, String> userDetails) {
 
-        User user = userRepository.getUserByEmail(email);
+        User user = userRepository.findByEmail(email);
 
         if (user == null) {
             throw new IllegalArgumentException("Could not find any user with email id:" + email);
